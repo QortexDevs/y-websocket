@@ -83,11 +83,13 @@ wsOpts = {
 ## Websocket Server
 <br>
 Start a HTTP y-websocket server:
+
 ```sh
 PORT=1234 npx y-websocket-server
 ```
 <br>
 Start a HTTPS y-websocket server:
+
 ```sh
 MODE=https PORT=1234 SSL_PRIVATE_KEY_PATH=/path/to/privkey.pem SSL_FULL_CHAIN_PATH=/path/to/fullchain.pem npx y-websocket-server
 ```
