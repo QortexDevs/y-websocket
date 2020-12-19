@@ -1,6 +1,6 @@
 {
   "name": "@qortexdevs/y-websocket",
-  "version": "1.3.10",
+  "version": "1.3.11",
   "description": "Websockets provider for Yjs with HTTPS support",
   "main": "./dist/y-websocket.cjs",
   "module": "./src/y-websocket.js",
@@ -27,10 +27,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yjs/y-websocket.git"
+    "url": "git+https://github.com/qortexdevs/y-websocket.git"
   },
   "keywords": [
-    "Yjs"
+    "Yjs",
+    "QortexDevs"
   ],
   "author": "Kevin Jahns <kevin.jahns@protonmail.com>",
   "contributors": [
@@ -38,9 +39,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yjs/y-websocket/issues"
+    "url": "https://github.com/qortexdevs/y-websocket/issues"
   },
-  "homepage": "https://github.com/yjs/y-websocket#readme",
+  "homepage": "https://github.com/qortexdevs/y-websocket#readme",
   "standard": {
     "ignore": [
       "/dist",

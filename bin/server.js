@@ -14,9 +14,9 @@ const httpRequestListener = (request, response) => {
 
 let server
 
-const port = process.env.MODE || 'http'
+const mode = process.env.MODE || 'http'
 
-if (process.env.MODE === 'https') {
+if (mode === 'https') {
   const https = require('https')
   const fs = require('fs')
   const httpsOptions = {
