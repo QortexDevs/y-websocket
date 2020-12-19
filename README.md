@@ -1,6 +1,6 @@
 
 # y-websocket :tophat:
-> WebSocket Provider for Yjs
+> WebSocket Provider for Yjs forked from [y-websocket](https://www.npmjs.com/package/y-websocket) for HTTPS support
 
 The Websocket Provider implements a classical client server model. Clients connect to a single endpoint over Websocket. The server distributes awareness information and document updates among clients.
 
@@ -81,26 +81,41 @@ wsOpts = {
 </dl>
 
 ## Websocket Server
-
-Start a y-websocket server:
-
+<br>
+Start a HTTP y-websocket server:
 ```sh
 PORT=1234 npx y-websocket-server
 ```
+<br>
+Start a HTTPS y-websocket server:
+```sh
+MODE=https PORT=1234 SSL_PRIVATE_KEY_PATH=/path/to/privkey.pem SSL_FULL_CHAIN_PATH=/path/to/fullchain.pem npx y-websocket-server
+```
 
-Since npm symlinks the `y-websocket-server` executable from your local `./node_modules/.bin` folder, you can simply run npx. The `PORT` environment variable already defaults to 1234.
+Since npm symlinks the `y-websocket-server` executable from your local `./node_modules/.bin` folder, you can simply run npx. The `PORT` environment variable already defaults to 1234. The `MODE` environment variable defaukts to `http`. 
+
+To enable HTTPS set
+* `MODE` to `https`
+* `SSL_PRIVATE_KEY_PATH` to privatekey.pem location
+* `SSL_FULL_CHAIN_PATH` to fullchain.pem location
 
 ### Websocket Server with Persistence
 
 Persist document updates in a LevelDB database.
 
 See [LevelDB Persistence](https://github.com/yjs/y-leveldb) for more info.
-
+<br>
+HTTPS
 ```sh
 PORT=1234 YPERSISTENCE=./dbDir node ./node_modules/y-websocket/bin/server.js
 ```
+<br>
+HTTPS
+```sh
+MODE=https PORT=1234 SSL_PRIVATE_KEY_PATH=/path/to/privkey.pem SSL_FULL_CHAIN_PATH=/path/to/fullchain.pem YPERSISTENCE=./dbDir node ./node_modules/y-websocket/bin/server.js
+```
 
-### Websocket Server with HTTP callback
+### Websocket Server with HTTP callback (`MODE=http` only)
 
 Send a debounced callback to an HTTP server (`POST`) on document update.
 
