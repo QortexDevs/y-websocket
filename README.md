@@ -137,3 +137,7 @@ This sends a debounced callback to `localhost:3000` 2 seconds after receiving an
 ## License
 
 [The MIT License](./LICENSE)
+
+## Sponsors
+
+[Conspectus](https://conspectus.io/)
