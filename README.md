@@ -129,10 +129,13 @@ Can take the following ENV variables:
 * `CALLBACK_DEBOUNCE_WAIT` : Debounce time between callbacks (in ms). Defaults to 2000 ms
 * `CALLBACK_DEBOUNCE_MAXWAIT` : Maximum time to wait before callback. Defaults to 10 seconds
 * `CALLBACK_TIMEOUT` : Timeout for the HTTP call. Defaults to 5 seconds
-* `CALLBACK_OBJECTS` : JSON of shared objects to get data (
+* `CALLBACK_OBJECTS` : JSON of shared objects to get data:
+
     ```json 
-    {"SHARED_OBJECT_NAME":"SHARED_OBJECT_TYPE"}
-    ```)
+    {
+        "OBJECT_NAME": "OBJECT_TYPE"
+    }
+    ```
 
 ```sh
 CALLBACK_URL=http://localhost:3000/ CALLBACK_OBJECTS='{"prosemirror":"XmlFragment"}' npm start
