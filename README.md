@@ -1,6 +1,6 @@
 
 # y-websocket :tophat:
-> WebSocket Provider for Yjs forked from [y-websocket](https://www.npmjs.com/package/y-websocket) for HTTPS support
+> WebSocket Provider for Yjs with HTTP and HTTPS support
 
 The Websocket Provider implements a classical client server model. Clients connect to a single endpoint over Websocket. The server distributes awareness information and document updates among clients.
 
