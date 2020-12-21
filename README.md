@@ -108,11 +108,13 @@ Persist document updates in a LevelDB database.
 See [LevelDB Persistence](https://github.com/yjs/y-leveldb) for more info.
 <br>
 HTTPS
+
 ```sh
 PORT=1234 YPERSISTENCE=./dbDir node ./node_modules/y-websocket/bin/server.js
 ```
 <br>
 HTTPS
+
 ```sh
 MODE=https PORT=1234 SSL_PRIVATE_KEY_PATH=/path/to/privkey.pem SSL_FULL_CHAIN_PATH=/path/to/fullchain.pem YPERSISTENCE=./dbDir node ./node_modules/y-websocket/bin/server.js
 ```
@@ -127,11 +129,15 @@ Can take the following ENV variables:
 * `CALLBACK_DEBOUNCE_WAIT` : Debounce time between callbacks (in ms). Defaults to 2000 ms
 * `CALLBACK_DEBOUNCE_MAXWAIT` : Maximum time to wait before callback. Defaults to 10 seconds
 * `CALLBACK_TIMEOUT` : Timeout for the HTTP call. Defaults to 5 seconds
-* `CALLBACK_OBJECTS` : JSON of shared objects to get data (`'{"SHARED_OBJECT_NAME":"SHARED_OBJECT_TYPE}'`)
+* `CALLBACK_OBJECTS` : JSON of shared objects to get data (
+    ```json 
+    {"SHARED_OBJECT_NAME":"SHARED_OBJECT_TYPE"}
+    ```)
 
 ```sh
 CALLBACK_URL=http://localhost:3000/ CALLBACK_OBJECTS='{"prosemirror":"XmlFragment"}' npm start
 ```
+
 This sends a debounced callback to `localhost:3000` 2 seconds after receiving an update (default `DEBOUNCE_WAIT`) with the data of an XmlFragment named `"prosemirror"` in the body.
 
 ## License
