@@ -149,4 +149,4 @@ This sends a debounced callback to `localhost:3000` 2 seconds after receiving an
 
 ## Sponsors
 
-[Conspectus](https://conspectus.io/)
+[Conspectus](https://conspectus.io/?utm_source=qortex&utm_medium=github&utm_campaign=y-websocket) — online notes
