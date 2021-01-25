@@ -1,4 +1,6 @@
 
+# Latest version is expiremental, do not try to use it. Stick with 1.3.13
+
 # y-websocket :tophat:
 > WebSocket Provider for Yjs forked from [y-websocket](https://www.npmjs.com/package/y-websocket) for HTTPS support
 

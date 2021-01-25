@@ -9,8 +9,20 @@ const map = require('lib0/dist/map.cjs')
 
 const debounce = require('lodash.debounce')
 
-const callbackHandler = require('./callback.js').callbackHandler
-const isCallbackSet = require('./callback.js').isCallbackSet
+const CALLBACK_TYPE = process.env.CALLBACK_TYPE || 'http'
+
+let callbackHandler
+let isCallbackSet
+
+switch (CALLBACK_TYPE) {
+  case 'http':
+    callbackHandler = require('./http-callback.js').callbackHandler
+    isCallbackSet = require('./http-callback.js').isCallbackSet
+    break
+  case 'mysql':
+    callbackHandler = require('./mysql-callback.js').callbackHandler
+    isCallbackSet = require('./mysql-callback.js').isCallbackSet
+}
 
 const CALLBACK_DEBOUNCE_WAIT = parseInt(process.env.CALLBACK_DEBOUNCE_WAIT) || 2000
 const CALLBACK_DEBOUNCE_MAXWAIT = parseInt(process.env.CALLBACK_DEBOUNCE_MAXWAIT) || 10000
