@@ -6,7 +6,7 @@ const MYSQL_PASSWORD = process.env.MYSQL_PASSWORD || ''
 const MYSQL_DATABASE = process.env.MYSQL_DATABASE || 'database'
 const MYSQL_TABLE = process.env.MYSQL_TABLE || 'table'
 const MYSQL_CONTENT_FIELD = process.env.MYSQL_CONTENT_FIELD || 'content'
-const MYSQL_KEY_FIELD = process.env.MYSQL_CONTENT_FIELD || 'id'
+const MYSQL_KEY_FIELD = process.env.MYSQL_KEY_FIELD || 'id'
 const MYSQL_PORT = process.env.MYSQL_PORT || 3306
 
 const CALLBACK_TIMEOUT = process.env.CALLBACK_TIMEOUT || 5000
