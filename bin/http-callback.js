@@ -1,4 +1,6 @@
-const http = require('http')
+const updater = require(process.env.MODE)
+
+const getCookie = require('./cookie.js').getCookie
 
 const CALLBACK_URL = process.env.CALLBACK_URL ? new URL(process.env.CALLBACK_URL) : null
 const CALLBACK_TIMEOUT = process.env.CALLBACK_TIMEOUT || 5000
@@ -22,7 +24,7 @@ exports.callbackHandler = (update, origin, doc) => {
     const sharedObjectType = CALLBACK_OBJECTS[sharedObjectName]
     dataToSend.data[sharedObjectName] = {
       type: sharedObjectType,
-      content: getContent(sharedObjectName, sharedObjectType, doc).toJSON()
+      content: getContent(sharedObjectName, sharedObjectType, doc)
     }
   })
   callbackRequest(CALLBACK_URL, CALLBACK_TIMEOUT, dataToSend)
@@ -36,17 +38,27 @@ exports.callbackHandler = (update, origin, doc) => {
 const callbackRequest = (url, timeout, data) => {
   data = JSON.stringify(data)
   const options = {
-    hostname: url.hostname,
-    port: url.port,
-    path: url.pathname,
     timeout: timeout,
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Content-Length': data.length
+      'Content-Length': Buffer.byteLength(data),
+      'Cookie': getCookie()
     }
   }
-  const req = http.request(options)
+  const req = updater.request(url.toString(), options,
+    (response) => {
+      response.setEncoding('utf8')
+      let responseData = ''
+      response.on('data', (chunk) => {
+        responseData += chunk
+      })
+      response.on('end', () => {
+      // const responseData = JSON.parse(data)
+        console.log(responseData)
+      })
+    }
+  )
   req.on('timeout', () => {
     console.warn('Callback request timed out.')
     req.abort()
@@ -71,6 +83,7 @@ const getContent = (objName, objType, doc) => {
     case 'Text': return doc.getText(objName)
     case 'XmlFragment': return doc.getXmlFragment(objName)
     case 'XmlElement': return doc.getXmlElement(objName)
+    case 'Delta': return doc.getText(objName).toDelta()
     default : return {}
   }
 }
