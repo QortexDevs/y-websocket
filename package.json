@@ -1,6 +1,6 @@
 {
   "name": "@qortexdevs/y-websocket",
-  "version": "1.4",
+  "version": "1.4.0",
   "description": "Websockets provider for Yjs with HTTPS support",
   "main": "./dist/y-websocket.cjs",
   "module": "./src/y-websocket.js",

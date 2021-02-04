@@ -62,7 +62,7 @@ server.on('upgrade', (request, socket, head) => {
       })
       response.on('end', () => {
         const authData = JSON.parse(data)
-        if (authData.status == 'ok') {
+        if (authData.status === 'ok') {
           wss.emit('connection', ws, request)
         }
       })
